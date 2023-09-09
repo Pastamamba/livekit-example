@@ -1,0 +1,25 @@
+.my-participant-name {
+  color: red;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.my-participant-name:hover {
+  color: darkred;
+}
+
+.participant-indicators {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lk-pagination-control {
+  transform: translateX(-10%) !important;
+  background-color: red;
+}
+
+.lk-room-container {
+  background: antiquewhite;
+}
