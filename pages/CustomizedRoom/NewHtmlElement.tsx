@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /**
  * NewHtmlElement is a customizable component where users can add or modify
@@ -6,7 +6,7 @@ import React from 'react';
  * a yellow background, but it can be adjusted to fit any specific needs.
  */
 const NewHtmlElement: React.FC = () => (
-    <div style={{ backgroundColor: "yellow", height: "60vh" }} />
+  <div style={{ backgroundColor: "yellow", height: "60vh" }} />
 );
 
 export default NewHtmlElement;

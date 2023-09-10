@@ -1,6 +1,6 @@
 // CustomizeExample component provides a customized video room experience.
 
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState } from "react";
 import {
   LiveKitRoom,
   RoomAudioRenderer,
@@ -26,11 +26,11 @@ type CustomizeExampleProps = {
  * It includes a toggleable custom HTML element, a custom control bar, and a stage for video tracks.
  */
 const CustomizeExample: React.FC<CustomizeExampleProps> = ({
-                                                             token,
-                                                             userChoices,
-                                                             connected,
-                                                             setConnected,
-                                                           }) => {
+  token,
+  userChoices,
+  connected,
+  setConnected,
+}) => {
   // URL for the LiveKit server
   const liveKitUrl = process.env.NEXT_PUBLIC_LIVEKIT_URL;
 
@@ -39,22 +39,26 @@ const CustomizeExample: React.FC<CustomizeExampleProps> = ({
   const { hq } = router.query;
 
   // Define room options based on user choices and query parameters
-  const roomOptions = useMemo((): RoomOptions => ({
-    videoCaptureDefaults: {
-      deviceId: userChoices.videoDeviceId ?? undefined,
-      resolution: hq === "true" ? VideoPresets.h2160 : VideoPresets.h720,
-    },
-    publishDefaults: {
-      videoSimulcastLayers: hq === "true"
-          ? [VideoPresets.h1080, VideoPresets.h720]
-          : [VideoPresets.h540, VideoPresets.h216],
-    },
-    audioCaptureDefaults: {
-      deviceId: userChoices.audioDeviceId ?? undefined,
-    },
-    adaptiveStream: { pixelDensity: "screen" },
-    dynacast: true,
-  }), [hq, userChoices.videoDeviceId, userChoices.audioDeviceId]);
+  const roomOptions = useMemo(
+    (): RoomOptions => ({
+      videoCaptureDefaults: {
+        deviceId: userChoices.videoDeviceId ?? undefined,
+        resolution: hq === "true" ? VideoPresets.h2160 : VideoPresets.h720,
+      },
+      publishDefaults: {
+        videoSimulcastLayers:
+          hq === "true"
+            ? [VideoPresets.h1080, VideoPresets.h720]
+            : [VideoPresets.h540, VideoPresets.h216],
+      },
+      audioCaptureDefaults: {
+        deviceId: userChoices.audioDeviceId ?? undefined,
+      },
+      adaptiveStream: { pixelDensity: "screen" },
+      dynacast: true,
+    }),
+    [hq, userChoices.videoDeviceId, userChoices.audioDeviceId]
+  );
 
   // State for room and connection status
   const [room] = useState(new Room());
@@ -67,35 +71,38 @@ const CustomizeExample: React.FC<CustomizeExampleProps> = ({
   };
 
   return (
-      <div className={styles.container} data-lk-theme="default">
-        {connected && (
-            <LiveKitRoom
-                room={room}
-                token={token}
-                serverUrl={liveKitUrl}
-                options={roomOptions}
-                connect={connected}
-                onConnected={() => setIsConnected(true)}
-                onDisconnected={handleDisconnect}
-                style={{
-                  backgroundColor: '#8ca9a9',
-                  borderRadius: "1em",
-                  padding: "1em"
-            }}
-                video={userChoices.videoEnabled}
-                audio={userChoices.audioEnabled}
-            >
-              {isConnected && toggleDivState && <NewHtmlElement />}
-              <RoomAudioRenderer />
-              {isConnected && <Stage toggleDivState={toggleDivState} />}
-              {isConnected ? (
-                  <MyControlBar toggleDivState={toggleDivState} setToggleDivState={setToggleDivState} />
-              ) : (
-                  <ControlBar />
-              )}
-            </LiveKitRoom>
-        )}
-      </div>
+    <div className={styles.container} data-lk-theme="default">
+      {connected && (
+        <LiveKitRoom
+          room={room}
+          token={token}
+          serverUrl={liveKitUrl}
+          options={roomOptions}
+          connect={connected}
+          onConnected={() => setIsConnected(true)}
+          onDisconnected={handleDisconnect}
+          style={{
+            backgroundColor: "#8ca9a9",
+            borderRadius: "1em",
+            padding: "1em",
+          }}
+          video={userChoices.videoEnabled}
+          audio={userChoices.audioEnabled}
+        >
+          {isConnected && toggleDivState && <NewHtmlElement />}
+          <RoomAudioRenderer />
+          {isConnected && <Stage toggleDivState={toggleDivState} />}
+          {isConnected ? (
+            <MyControlBar
+              toggleDivState={toggleDivState}
+              setToggleDivState={setToggleDivState}
+            />
+          ) : (
+            <ControlBar />
+          )}
+        </LiveKitRoom>
+      )}
+    </div>
   );
 };
 

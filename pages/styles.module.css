@@ -1,20 +1,20 @@
 .room-name-input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin: 20px auto;
-    width: 400px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 20px auto;
+  width: 400px;
 }
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .room-name-title {
-    margin-bottom: 5px;
-    font-size: 1.5em;
-    color: black;
+  margin-bottom: 5px;
+  font-size: 1.5em;
+  color: black;
 }
