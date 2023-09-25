@@ -31,7 +31,7 @@ const Stage: React.FC<StageProps> = ({ toggleDivState }) => {
   // Adjust styles based on the toggle state
   const gridLayoutStyle = toggleDivState
     ? { display: "flex" }
-    : { height: "90vh" };
+    : { height: "87vh" };
   const tileStyle = toggleDivState ? { width: "150px" } : { padding: ".8em" };
 
   return (
@@ -71,9 +71,7 @@ const Stage: React.FC<StageProps> = ({ toggleDivState }) => {
                     <TrackMutedIndicator source={track.source} />
                   </div>
                   {/* Display the participant's name */}
-                  <ParticipantName
-                    className={myStyles["my-participant-name"]}
-                  />
+                  <ParticipantName className={myStyles["participant-name"]} />
                 </div>
               </div>
             )

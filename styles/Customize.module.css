@@ -1,11 +1,11 @@
-.my-participant-name {
+.participant-name {
   color: red;
   text-transform: uppercase;
   text-decoration: none;
   font-weight: bold;
 }
 
-.my-participant-name:hover {
+.participant-name:hover {
   color: darkred;
 }
 
@@ -17,9 +17,9 @@
 
 .lk-pagination-control {
   transform: translateX(-10%) !important;
-  background-color: red;
 }
 
 .lk-room-container {
   background: antiquewhite;
+  min-height: 1500px;
 }

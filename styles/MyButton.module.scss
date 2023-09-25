@@ -1,0 +1,14 @@
+.myButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    color: var(--control-fg);
+    background-image: none;
+    background-color: #1e1e1e;
+    border: 0;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    white-space: nowrap;
+}

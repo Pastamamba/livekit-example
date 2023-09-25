@@ -14,7 +14,7 @@ import NewHtmlElement from "./CustomizedRoom/NewHtmlElement";
 import Stage from "./CustomizedRoom/Stage";
 import MyControlBar from "./CustomizedRoom/MyControlBar";
 
-type CustomizeExampleProps = {
+type LiveKitRoomWrapperProps = {
   token: string;
   userChoices: LocalUserChoices;
   connected: boolean;
@@ -25,7 +25,7 @@ type CustomizeExampleProps = {
  * CustomizeExample component provides a customized video room experience.
  * It includes a toggleable custom HTML element, a custom control bar, and a stage for video tracks.
  */
-const CustomizeExample: React.FC<CustomizeExampleProps> = ({
+const LiveKitRoomWrapper: React.FC<LiveKitRoomWrapperProps> = ({
   token,
   userChoices,
   connected,
@@ -84,6 +84,7 @@ const CustomizeExample: React.FC<CustomizeExampleProps> = ({
           style={{
             backgroundColor: "#8ca9a9",
             borderRadius: "1em",
+              minHeight: "100vh",
             padding: "1em",
           }}
           video={userChoices.videoEnabled}
@@ -91,7 +92,7 @@ const CustomizeExample: React.FC<CustomizeExampleProps> = ({
         >
           {isConnected && toggleDivState && <NewHtmlElement />}
           <RoomAudioRenderer />
-          {isConnected && <Stage toggleDivState={toggleDivState} />}
+          {isConnected ? <Stage toggleDivState={toggleDivState} /> : <div style={{height: "90vh"}}/>}
           {isConnected ? (
             <MyControlBar
               toggleDivState={toggleDivState}
@@ -106,4 +107,4 @@ const CustomizeExample: React.FC<CustomizeExampleProps> = ({
   );
 };
 
-export default CustomizeExample;
+export default LiveKitRoomWrapper;

@@ -19,13 +19,24 @@ a {
   transform: translate(-50%, 150%) !important;
 }
 
-/* 
+/*
 @media (prefers-color-scheme: dark) { */
 html {
   color-scheme: dark;
 }
+:root {
+  --lk-bg: #5a5d5b;
+}
 body {
   color: white;
-  background: black;
+  background: var(--lk-bg);
 }
 /* } */
+
+
+.lk-control-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}

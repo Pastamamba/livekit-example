@@ -1,5 +1,6 @@
 .container {
   padding: 0 2rem;
+  bottom: 0;
 }
 
 .main {
@@ -33,3 +34,4 @@
 .description {
   text-align: center;
 }
+

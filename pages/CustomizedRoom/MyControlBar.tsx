@@ -1,5 +1,7 @@
 import React from "react";
+import "@livekit/components-styles";
 import { ControlBar } from "@livekit/components-react";
+import styles from "../../styles/MyButton.module.scss";
 
 type MyControlBarProps = {
   toggleDivState: boolean;
@@ -7,28 +9,28 @@ type MyControlBarProps = {
 };
 
 const MyControlBar: React.FC<MyControlBarProps> = ({
-  toggleDivState,
-  setToggleDivState,
-}) => {
-  return (
-    <div
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        paddingTop: "1em",
-      }}
-    >
-      <button
-        className="your-button-class"
-        onClick={() => {
-          setToggleDivState(!toggleDivState);
-        }}
-      >
-        Toggle
-      </button>
-      <ControlBar style={{ flex: 1 }} />
-    </div>
-  );
+                                                       toggleDivState,
+                                                       setToggleDivState,
+                                                   }) => {
+    return (
+        <div
+            style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                paddingTop: "1em",
+            }}
+        >
+            <button className={styles.myButton}
+                    onClick={() => {
+                        setToggleDivState(!toggleDivState);
+                    }}
+            >
+                Toggle
+            </button>
+            <ControlBar style={{ flex: 0 }} />
+        </div>
+    );
 };
 
 export default MyControlBar;
