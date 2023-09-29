@@ -31,12 +31,11 @@ const Stage: React.FC<StageProps> = ({ toggleDivState }) => {
 
   // Adjust styles based on the toggle state
   const gridLayoutStyle = toggleDivState
-      ? { height: "20vh", background: "#111111", display: "flex"} // Set height to 80vh when toggleDivState is true
-      : { background: "#111111" }; // Set height to 100vh when toggleDivState is false
+      ? { height: "20vh", background: "#111111", display: "flex"}
+      : { background: "#111111" };
   const tileStyle = toggleDivState
       ? { width: "150px" }
       : {
-    padding: ".8em",
         background: "#1e1e1e",
         borderRadius: ".5em",
         margin: ".4em",
@@ -51,11 +50,23 @@ const Stage: React.FC<StageProps> = ({ toggleDivState }) => {
         <TrackContext.Consumer>
           {(track) =>
             track && (
-              <div style={tileStyle}>
+              <div style={{
+                ...tileStyle,
+                padding: isTrackReference(track) && !track?.publication?.track?.isMuted ? "0" : ".8em"
+              }}>
                 {/* Check if the track is a reference and display accordingly */}
                 {isTrackReference(track) &&
                 !track?.publication?.track?.isMuted ? (
-                  <VideoTrack {...track} />
+                    <>
+                      <VideoTrack {...track} />
+                      <div style={{
+                        display: "flex",
+                        marginTop: "-25px"
+                      }}>
+                      <TrackMutedIndicator source={Track.Source.Microphone} show="muted" />
+                      <ParticipantName className={myStyles["participant-name"]} />
+                      </div>
+                    </>
                 ) : (
                   <div
                     style={{
@@ -83,7 +94,6 @@ const Stage: React.FC<StageProps> = ({ toggleDivState }) => {
                         />
 
                     }
-
                     <div className={myStyles["participant-indicators"]}>
                       <div style={{
                         display: "flex",
@@ -97,11 +107,9 @@ const Stage: React.FC<StageProps> = ({ toggleDivState }) => {
                         <TrackMutedIndicator show="unmuted" source={track.source} />
                         <ParticipantName className={myStyles["participant-name"]} />
                       </div>
-                      {/* Display the participant's name */}
                     </div>
                   </div>
                 )}
-
               </div>
             )
           }
