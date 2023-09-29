@@ -31,7 +31,7 @@ const Stage: React.FC<StageProps> = ({ toggleDivState }) => {
   // Adjust styles based on the toggle state
   const gridLayoutStyle = toggleDivState
     ? { display: "flex" }
-    : { height: "87vh" };
+    : { height: "87vh", background: "#1e1e1e" };
   const tileStyle = toggleDivState ? { width: "150px" } : { padding: ".8em" };
 
   return (
@@ -65,13 +65,19 @@ const Stage: React.FC<StageProps> = ({ toggleDivState }) => {
                   </div>
                 )}
                 <div className={myStyles["participant-indicators"]}>
-                  <div style={{ display: "flex" }}>
+                  <div style={{
+                    display: "flex",
+                    alignItems: "center",
+                    padding: "0.25rem",
+                    backgroundColor: "#00000080",
+                    borderRadius: ".25rem"
+                  }}>
                     {/* Display mute indicators for microphone and the current track */}
                     <TrackMutedIndicator source={Track.Source.Microphone} />
                     <TrackMutedIndicator source={track.source} />
+                    <ParticipantName className={myStyles["participant-name"]} />
                   </div>
                   {/* Display the participant's name */}
-                  <ParticipantName className={myStyles["participant-name"]} />
                 </div>
               </div>
             )

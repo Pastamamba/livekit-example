@@ -25,7 +25,7 @@ const IndexPage: NextPage = () => {
   };
 
   return (
-      <>
+    <>
       <div data-lk-theme="default">
         {preJoinChoices && connected ? (
           <LiveKitRoomWrapper
@@ -37,15 +37,17 @@ const IndexPage: NextPage = () => {
         ) : (
           <div data-lk-theme="default">
             <div className={styles.centerContainer}>
-              <h2 className={styles["room-name-title"]}>Room name to connect</h2>
+              <h2 className={styles["room-name-title"]}>
+                Room name to connect
+              </h2>
               <input
-                  className={styles["room-name-input"]}
-                  id="roomName"
-                  name="roomName"
-                  type="text"
-                  value={roomNameInput}
-                  placeholder="Room Name"
-                  onChange={(e) => setRoomNameInput(e.target.value)}
+                className={styles["room-name-input"]}
+                id="roomName"
+                name="roomName"
+                type="text"
+                value={roomNameInput}
+                placeholder="Room Name"
+                onChange={(e) => setRoomNameInput(e.target.value)}
               />
             </div>
             <PreJoin

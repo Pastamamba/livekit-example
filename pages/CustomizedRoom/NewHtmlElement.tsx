@@ -6,7 +6,7 @@ import React from "react";
  * a yellow background, but it can be adjusted to fit any specific needs.
  */
 const NewHtmlElement: React.FC = () => (
-  <div style={{ backgroundColor: "yellow", height: "65vh" }} />
+  <div style={{ backgroundColor: "yellow", height: "62vh" }} />
 );
 
 export default NewHtmlElement;

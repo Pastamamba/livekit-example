@@ -12,3 +12,22 @@
     cursor: pointer;
     white-space: nowrap;
 }
+
+@media (max-width: 768px) {
+    .controlBarContainer {
+        margin-top: -10px;
+    }
+}
+
+@media (min-width: 769px) {
+    .controlBarContainer {
+        margin-top: auto;
+    }
+}
+
+@media (max-width: 760px) {
+    .myButton {
+        height: 36px;
+        font-size: 16px;
+    }
+}

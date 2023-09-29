@@ -71,7 +71,15 @@ const LiveKitRoomWrapper: React.FC<LiveKitRoomWrapperProps> = ({
   };
 
   return (
-    <div className={styles.container} data-lk-theme="default">
+    <div
+      className={styles.container}
+      data-lk-theme="default"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh",
+      }}
+    >
       {connected && (
         <LiveKitRoom
           room={room}
@@ -82,9 +90,11 @@ const LiveKitRoomWrapper: React.FC<LiveKitRoomWrapperProps> = ({
           onConnected={() => setIsConnected(true)}
           onDisconnected={handleDisconnect}
           style={{
-            backgroundColor: "#8ca9a9",
+            display: "flex",
+            flexDirection: "column",
+            backgroundColor: "#111111",
             borderRadius: "1em",
-              minHeight: "100vh",
+            minHeight: "100vh",
             padding: "1em",
           }}
           video={userChoices.videoEnabled}
@@ -92,14 +102,27 @@ const LiveKitRoomWrapper: React.FC<LiveKitRoomWrapperProps> = ({
         >
           {isConnected && toggleDivState && <NewHtmlElement />}
           <RoomAudioRenderer />
-          {isConnected ? <Stage toggleDivState={toggleDivState} /> : <div style={{height: "90vh"}}/>}
+          <div style={{ flex: 1 }}>
+            {isConnected ? (
+              <Stage toggleDivState={toggleDivState} />
+            ) : (
+              <div style={{ height: "90vh" }} />
+            )}
+          </div>
           {isConnected ? (
             <MyControlBar
               toggleDivState={toggleDivState}
               setToggleDivState={setToggleDivState}
+              style={{
+                  marginTop: "-18px",
+                  background: "black",
+                  position: "absolute",
+                  width: "100%",
+                  bottom: "0",
+            }}
             />
           ) : (
-            <ControlBar />
+            <ControlBar style={{ marginTop: "-12px" }} />
           )}
         </LiveKitRoom>
       )}
