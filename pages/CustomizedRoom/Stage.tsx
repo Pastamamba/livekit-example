@@ -31,13 +31,20 @@ const Stage: React.FC<StageProps> = ({ toggleDivState }) => {
 
   // Adjust styles based on the toggle state
   const gridLayoutStyle = toggleDivState
-      ? { height: "20vh", background: "#1e1e1e" } // Set height to 80vh when toggleDivState is true
-      : { background: "#1e1e1e" }; // Set height to 100vh when toggleDivState is false
-  const tileStyle = toggleDivState ? { width: "150px" } : { padding: ".8em" };
+      ? { height: "20vh", background: "#111111", display: "flex"} // Set height to 80vh when toggleDivState is true
+      : { background: "#111111" }; // Set height to 100vh when toggleDivState is false
+  const tileStyle = toggleDivState
+      ? { width: "150px" }
+      : {
+    padding: ".8em",
+        background: "#1e1e1e",
+        borderRadius: ".5em",
+        margin: ".4em",
+      };
 
   return (
     <div className={styles.participantGrid} style={{
-      height: "87vh"
+      height: "92vh"
     }}>
       {toggleDivState && <NewHtmlElement />}
       <GridLayout style={gridLayoutStyle} tracks={tracks}>
@@ -52,6 +59,7 @@ const Stage: React.FC<StageProps> = ({ toggleDivState }) => {
                 ) : (
                   <div
                     style={{
+                      position: "relative",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
@@ -60,29 +68,40 @@ const Stage: React.FC<StageProps> = ({ toggleDivState }) => {
                       margin: ".2em",
                     }}
                   >
-                    <Image
-                      src="/no-picture.png"
-                      alt="Image description"
-                      width={150}
-                      height={150}
-                    />
+                    {!toggleDivState
+                        ? <Image
+                            src="/participant-placeholder.svg"
+                            alt="Image description"
+                            layout={"fill"}
+                            objectFit={"contain"}
+                        />
+                        : <Image
+                            src="/participant-placeholder.svg"
+                            alt="Image description"
+                            width={120}
+                            height={120}
+                        />
+
+                    }
+
+                    <div className={myStyles["participant-indicators"]}>
+                      <div style={{
+                        display: "flex",
+                        alignItems: "center",
+                        padding: "0.25rem",
+                        backgroundColor: "#00000080",
+                        borderRadius: ".25rem"
+                      }}>
+                        {/* Display mute indicators for microphone and the current track */}
+                        <TrackMutedIndicator source={Track.Source.Microphone} show="muted" />
+                        <TrackMutedIndicator show="unmuted" source={track.source} />
+                        <ParticipantName className={myStyles["participant-name"]} />
+                      </div>
+                      {/* Display the participant's name */}
+                    </div>
                   </div>
                 )}
-                <div className={myStyles["participant-indicators"]}>
-                  <div style={{
-                    display: "flex",
-                    alignItems: "center",
-                    padding: "0.25rem",
-                    backgroundColor: "#00000080",
-                    borderRadius: ".25rem"
-                  }}>
-                    {/* Display mute indicators for microphone and the current track */}
-                    <TrackMutedIndicator source={Track.Source.Microphone} />
-                    <TrackMutedIndicator source={track.source} />
-                    <ParticipantName className={myStyles["participant-name"]} />
-                  </div>
-                  {/* Display the participant's name */}
-                </div>
+
               </div>
             )
           }

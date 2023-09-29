@@ -22,7 +22,6 @@ const MyControlBar: React.FC<MyControlBarProps> = ({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        paddingTop: "1em",
       }}
     >
       <button

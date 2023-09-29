@@ -73,11 +73,6 @@ const LiveKitRoomWrapper: React.FC<LiveKitRoomWrapperProps> = ({
     <div
       className={styles.container}
       data-lk-theme="default"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh",
-      }}
     >
       {connected && (
         <LiveKitRoom
@@ -92,9 +87,7 @@ const LiveKitRoomWrapper: React.FC<LiveKitRoomWrapperProps> = ({
             display: "flex",
             flexDirection: "column",
             backgroundColor: "#111111",
-            borderRadius: "1em",
             minHeight: "100vh",
-            padding: "1em",
           }}
           video={userChoices.videoEnabled}
           audio={userChoices.audioEnabled}
@@ -112,15 +105,15 @@ const LiveKitRoomWrapper: React.FC<LiveKitRoomWrapperProps> = ({
               toggleDivState={toggleDivState}
               setToggleDivState={setToggleDivState}
               style={{
-                  marginTop: "-18px",
-                  background: "black",
+                  background: "#111",
                   position: "absolute",
                   width: "100%",
                   bottom: "0",
+                  borderTop: "1px solid #ffffff1a",
             }}
             />
           ) : (
-            <ControlBar style={{ marginTop: "-12px" }} />
+            <ControlBar />
           )}
         </LiveKitRoom>
       )}

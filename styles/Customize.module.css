@@ -6,10 +6,9 @@
 }
 
 .participant-indicators {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: -25px;
+  position: absolute;
+  bottom: 0.25rem;
+  left: 0;
 }
 
 .lk-pagination-control {
