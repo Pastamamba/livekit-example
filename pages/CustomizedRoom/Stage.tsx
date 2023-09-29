@@ -12,6 +12,7 @@ import styles from "../../styles/Simple.module.css";
 import myStyles from "../../styles/Customize.module.css";
 import { isTrackReference } from "@livekit/components-core";
 import Image from "next/image";
+import NewHtmlElement from "./NewHtmlElement";
 
 type StageProps = {
   toggleDivState: boolean;
@@ -30,12 +31,15 @@ const Stage: React.FC<StageProps> = ({ toggleDivState }) => {
 
   // Adjust styles based on the toggle state
   const gridLayoutStyle = toggleDivState
-    ? { display: "flex" }
-    : { height: "87vh", background: "#1e1e1e" };
+      ? { height: "20vh", background: "#1e1e1e" } // Set height to 80vh when toggleDivState is true
+      : { background: "#1e1e1e" }; // Set height to 100vh when toggleDivState is false
   const tileStyle = toggleDivState ? { width: "150px" } : { padding: ".8em" };
 
   return (
-    <div className={styles.participantGrid}>
+    <div className={styles.participantGrid} style={{
+      height: "87vh"
+    }}>
+      {toggleDivState && <NewHtmlElement />}
       <GridLayout style={gridLayoutStyle} tracks={tracks}>
         <TrackContext.Consumer>
           {(track) =>

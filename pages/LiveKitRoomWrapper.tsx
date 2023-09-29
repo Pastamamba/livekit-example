@@ -10,7 +10,6 @@ import {
 import { Room, RoomOptions, VideoPresets } from "livekit-client";
 import styles from "../styles/Simple.module.css";
 import { useRouter } from "next/router";
-import NewHtmlElement from "./CustomizedRoom/NewHtmlElement";
 import Stage from "./CustomizedRoom/Stage";
 import MyControlBar from "./CustomizedRoom/MyControlBar";
 
@@ -100,13 +99,12 @@ const LiveKitRoomWrapper: React.FC<LiveKitRoomWrapperProps> = ({
           video={userChoices.videoEnabled}
           audio={userChoices.audioEnabled}
         >
-          {isConnected && toggleDivState && <NewHtmlElement />}
           <RoomAudioRenderer />
-          <div style={{ flex: 1 }}>
+            <div style={{ flex: 1 }}>
             {isConnected ? (
               <Stage toggleDivState={toggleDivState} />
             ) : (
-              <div style={{ height: "90vh" }} />
+              <div/>
             )}
           </div>
           {isConnected ? (
